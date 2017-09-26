@@ -1,0 +1,13 @@
+<h1><%=@answer.text%></h1>
+
+<form action="/answers/<%=@answer.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="update_answer">Update answer text</label>
+  <input type="text" name="update_answer" class="form-control">
+  <button type="submit" class="btn">Update Answer</button>
+</form>
+
+<form action="/answers/<%=@answer.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn">Delete Answer</button>
+</form>

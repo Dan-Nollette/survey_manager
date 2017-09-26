@@ -18,8 +18,15 @@
   <div class="form-group">
     <label for="text">Question text</label>
     <input type="text" name="text" class="form-control">
+    <button type="submit" class="btn">Create Question</button>
   </div>
-  <button type="submit" class="btn">Create Question</button>
+</form>
+
+<form action="/surveys/<%=@survey.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="update_survey">Please enter a new title.</label>
+  <input type="text" name="update_survey" class="form-control">
+  <button type="submit" class="btn">Update Survey</button>
 </form>
 
 <form action="/surveys/<%=@survey.id%>" method="post">

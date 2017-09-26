@@ -9,8 +9,20 @@
 <form class="" action="/questions/<%=@question.id%>" method="post">
 
   <div class="form-group">
-    <label for="text">Add a answer</label>
+    <label for="text">Add an answer</label>
     <input type="text" name="text" class="form-control">
+    <button type="submit" class="btn">Create Answer</button>
   </div>
-  <button type="submit" class="btn">Create Answer</button>
+</form>
+
+<form action="/questions/<%=@question.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="update_question">Update question text</label>
+  <input type="text" name="update_question" class="form-control">
+  <button type="submit" class="btn">Update Question</button>
+</form>
+
+<form action="/questions/<%=@question.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn">Delete Question</button>
 </form>

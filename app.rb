@@ -46,6 +46,45 @@ end
 delete('/surveys/:id') do
   @survey = Survey.find(params['id'])
   @survey.destroy
-  @surveys = Survey.all
-  erb(:index)
+  redirect "/"
+end
+
+delete('/questions/:id') do
+  @question = Question.find(params['id'])
+  survey_id = @question.survey_id
+  @question.destroy
+  redirect "/surveys/#{survey_id.to_i}"
+end
+
+get('/answers/:id') do
+  @answer = Answer.find(params['id'])
+  erb(:answer)
+end
+
+delete('/answers/:id') do
+  @answer = Answer.find(params['id'])
+  question_id = @answer.question_id
+  @answer.destroy
+  redirect "/questions/#{question_id.to_i}"
+end
+
+patch('/surveys/:id') do
+  title = params['update_survey']
+  @survey = Survey.find(params['id'])
+  @survey.update(:title => title)
+  erb(:survey)
+end
+
+patch('/questions/:id') do
+  text = params['update_question']
+  @question = Question.find(params['id'])
+  @question.update(text: text)
+  erb(:question)
+end
+
+patch('/answers/:id') do
+  text = params['update_answer']
+  @answer = Answer.find(params['id'])
+  @answer.update(text: text)
+  erb(:answer)
 end
