@@ -42,3 +42,10 @@ post('/questions/:id') do
   @question = Question.find(question_id)
   erb(:question)
 end
+
+delete('/surveys/:id') do
+  @survey = Survey.find(params['id'])
+  @survey.destroy
+  @surveys = Survey.all
+  erb(:index)
+end
