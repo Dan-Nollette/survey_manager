@@ -1,4 +1,5 @@
 <h1><%=@answer.text%></h1>
+<h2>the answer has been chosen <%=@answer.counter%> times out of <%=@survey.counter%> times that the survey was taken.</h2>
 
 <form action="/answers/<%=@answer.id%>" method="post">
   <input type="hidden" name="_method" value="patch">

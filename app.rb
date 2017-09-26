@@ -58,6 +58,8 @@ end
 
 get('/answers/:id') do
   @answer = Answer.find(params['id'])
+  question = Question.find(@answer.question_id.to_i)
+  @survey = Survey.find(question.survey_id.to_i)
   erb(:answer)
 end
 
@@ -86,5 +88,36 @@ patch('/answers/:id') do
   text = params['update_answer']
   @answer = Answer.find(params['id'])
   @answer.update(text: text)
-  erb(:answer)
+  redirect("/answers/#{@answer.id.to_s}")
 end
+
+get('/survey_questionnaires') do
+  @message = ''
+  @surveys = Survey.all
+  erb(:survey_questionnaires)
+end
+
+get('/survey_questionnaires/:id') do
+  @survey = Survey.find(params['id'])
+  erb(:survey_display)
+end
+
+post ("/survey_display/:id") do
+  @survey = Survey.find(params['id'])
+  count = @survey.counter + 1
+  @survey.update(counter: count)
+  params.keys.each do |key|
+    if (key != 'id' && key != 'button' && key != 'captures')
+      answer = Answer.find(params[key].to_i)
+      answer_count = answer.counter + 1
+      answer.update(counter: count)
+    end
+  end
+  erb(:thanks)
+end
+
+# 10
+# 8
+# button
+# captures
+# id

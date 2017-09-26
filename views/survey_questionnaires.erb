@@ -1,0 +1,10 @@
+<h3><%=@message%></h3>
+<h1>Take a Survey</h1>
+
+<p>Click on which survey you would like to take.</p>
+
+<ul>
+  <% @surveys.each do |survey| %>
+    <li><a href="/survey_questionnaires/<%= survey.id %>"><%= survey.title %></a></li>
+  <% end %>
+</ul>
