@@ -1,0 +1,15 @@
+<h1>Survey Manager</h1>
+<ul>
+  <% @surveys.each do |survey| %>
+    <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+  <% end %>
+</ul>
+
+<form class="" action="/" method="post">
+  <h4>Add a survey</h4>
+  <div class="form-group">
+    <label for="title">Survey Title</label>
+    <input type="text" name="title" class="form-control">
+  </div>
+  <button type="submit" class="btn">Create Survey</button>
+</form>

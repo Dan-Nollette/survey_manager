@@ -1,0 +1,23 @@
+<h1><%=@survey.title%></h1>
+<h3>This survey has been taken <%= @survey.counter%> times.</h3>
+<ul>
+  <% @survey.questions.each do |question| %>
+    <li>
+      <a href="/questions/<%= question.id %>"><%= question.text %></a>
+      <ul>
+        <% question.answers.each do |answer| %>
+          <li><%=answer.text%>: \n times: <%=answer.counter%></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+
+<form class="" action="/surveys/<%=@survey.id%>" method="post">
+  <h4>Add a question</h4>
+  <div class="form-group">
+    <label for="text">Question text</label>
+    <input type="text" name="text" class="form-control">
+  </div>
+  <button type="submit" class="btn">Create Question</button>
+</form>
