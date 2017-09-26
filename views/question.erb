@@ -1,0 +1,16 @@
+<h1><%=@question.text%></h1>
+
+<ul>
+  <% @question.answers.each do |answer| %>
+    <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a></li>
+  <% end %>
+</ul>
+
+<form class="" action="/questions/<%=@question.id%>" method="post">
+
+  <div class="form-group">
+    <label for="text">Add a answer</label>
+    <input type="text" name="text" class="form-control">
+  </div>
+  <button type="submit" class="btn">Create Answer</button>
+</form>

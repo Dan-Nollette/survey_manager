@@ -6,7 +6,7 @@
       <a href="/questions/<%= question.id %>"><%= question.text %></a>
       <ul>
         <% question.answers.each do |answer| %>
-          <li><%=answer.text%>: \n times: <%=answer.counter%></li>
+          <li><%=answer.text%> <br> times: <%=answer.counter%></li>
         <% end %>
       </ul>
     </li>

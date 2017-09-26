@@ -30,3 +30,15 @@ post('/surveys/:id') do
   @survey = Survey.find(survey_id)
   erb(:survey)
 end
+
+get('/questions/:id') do
+  @question = Question.find(params['id'])
+  erb(:question)
+end
+
+post('/questions/:id') do
+  question_id = params['id']
+  Answer.create({text: params['text'], question_id: question_id, counter: 0})
+  @question = Question.find(question_id)
+  erb(:question)
+end
